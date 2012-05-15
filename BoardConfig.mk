@@ -29,7 +29,7 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_CUSTOM_RELEASETOOL := ./device/allwinner/a10/releasetools/squisher
+TARGET_CUSTOM_RELEASETOOL := ./device/allwinner/common/releasetools/squisher
 
 BOARD_HAVE_BLUETOOTH := true
 TARGET_USES_CUSTOM_VIBRATOR_PATH := "/sys/class/timed_output/sun4i-vibrator/enable"
@@ -43,24 +43,24 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1073741824
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 #EGL stuff
-BOARD_EGL_CFG := device/allwinner/a10/egl.cfg
+BOARD_EGL_CFG := device/allwinner/common/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USE_SKIA_LCDTEXT := true
 
 #Recovery Stuff
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_generic
 #TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_generic
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/allwinner/a10/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/allwinner/common/recovery_keys.c
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Wifi stuff
 #WPA_SUPPLICANT_VERSION := VER_0_8_X  //Prebuilt
 #BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-TARGET_CUSTOM_WIFI := ../../device/allwinner/a10/wifi.c
+TARGET_CUSTOM_WIFI := ../../device/allwinner/common/wifi.c
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/8192cu.ko"
 WIFI_DRIVER_MODULE_NAME     := 8192cu
 WIFI_DRIVER_FW_PATH_STA     := 8192cu
 WIFI_DRIVER_FW_PATH_AP      := 8192cu
 
 # Beware: set only prebuilt OR source+config
-TARGET_PREBUILT_KERNEL := $(ANDROID_BUILD_TOP)/device/allwinner/a10/kernel
+TARGET_PREBUILT_KERNEL := $(ANDROID_BUILD_TOP)/device/allwinner/common/kernel

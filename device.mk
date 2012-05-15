@@ -28,7 +28,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	net.dns1=8.8.8.8 \
 	net.dns2=8.8.4.4 
 
-DEVICE_PACKAGE_OVERLAYS := device/allwinner/a10/overlay
+DEVICE_PACKAGE_OVERLAYS := device/allwinner/common/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -66,8 +66,8 @@ PRODUCT_PACKAGES += make_ext4fs e2fsck
 PRODUCT_PACKAGES += audio.a2dp.default libaudioutils libtinyalsa audio_policy.default audio.primary.exDroid
 
 # copy all others kernel modules under the "modules" directory to system/lib/modules
-PRODUCT_COPY_FILES += $(shell test -d device/allwinner/a10/prebuilt/lib/modules && \
-	find device/allwinner/a10/prebuilt/lib/modules -name '*.ko' \
+PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modules && \
+	find device/allwinner/common/prebuilt/lib/modules -name '*.ko' \
 	-printf '%p:system/lib/modules/%f ')
 
 $(call inherit-product, build/target/product/full_base.mk)

@@ -14,9 +14,9 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, device/allwinner/a10/a10.mk)
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
-$(call inherit-product-if-exists, vendor/allwinner/a10/a10-vendor.mk)
+
+$(call inherit-product, device/allwinner/common/device.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := full_a10
@@ -24,9 +24,3 @@ PRODUCT_DEVICE := a10
 PRODUCT_BRAND := Allwinner
 PRODUCT_MODEL := A10
 PRODUCT_MANUFACTURER := Allwinner
-
-
-
-
-
-
