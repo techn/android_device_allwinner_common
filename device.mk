@@ -33,13 +33,8 @@ DEVICE_PACKAGE_OVERLAYS := device/allwinner/common/overlay
 # Permissions
 PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-	frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-	frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-	frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
 	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-	frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
 	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
@@ -50,20 +45,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += LiveWallpapers LiveWallpapersPicker MagicSmokeWallpapers HoloSpiralWallpaper 
 PRODUCT_PACKAGES += VisualizationWallpapers librs_jni
 
-# Sensors
-PRODUCT_PACKAGES += lights.a10 sensors.a10
-
-# ICS Camera
-PRODUCT_PACKAGES += Camera camera.a10
-
-# CM9 apps
-PRODUCT_PACKAGES += Trebuchet FileManager com.android.future.usb.accessory
-
 # EXT4 Support
 PRODUCT_PACKAGES += make_ext4fs e2fsck
-
-# Audio stuff
-PRODUCT_PACKAGES += audio.a2dp.default libaudioutils libtinyalsa audio_policy.default audio.primary.exDroid
 
 # copy all others kernel modules under the "modules" directory to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modules && \
@@ -73,7 +56,7 @@ PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modul
 $(call inherit-product, build/target/product/full_base.mk)
 
 # Should be after the full_base include, which loads languages_full
-PRODUCT_LOCALES += mdpi
+PRODUCT_LOCALES += hdpi
 
 PRODUCT_NAME := full_a10
 PRODUCT_DEVICE := A10
