@@ -33,16 +33,28 @@
 
 #include "sensors.h"
 
-
+#include "LightSensor.h"
 #include "AccelSensor.h"
 
 /*****************************************************************************/
 
 #define DELAY_OUT_TIME 0x7FFFFFFF
 
+#define LIGHT_SENSOR_POLLTIME    2000000000
+
 #define SENSORS_ACCELERATION     (1<<ID_A)
+#define SENSORS_MAGNETIC_FIELD   (1<<ID_M)
+#define SENSORS_ORIENTATION      (1<<ID_O)
+#define SENSORS_LIGHT            (1<<ID_L)
+#define SENSORS_PROXIMITY        (1<<ID_P)
+#define SENSORS_GYROSCOPE        (1<<ID_GY)
 
 #define SENSORS_ACCELERATION_HANDLE     0
+#define SENSORS_MAGNETIC_FIELD_HANDLE   1
+#define SENSORS_ORIENTATION_HANDLE      2
+#define SENSORS_LIGHT_HANDLE            3
+#define SENSORS_PROXIMITY_HANDLE        4
+#define SENSORS_GYROSCOPE_HANDLE        5
 
 
 /*****************************************************************************/
@@ -53,6 +65,12 @@ static const struct sensor_t sSensorList[] = {
           "Freescale Semiconductor Inc.",
           1, SENSORS_ACCELERATION_HANDLE,
           SENSOR_TYPE_ACCELEROMETER, RANGE_A, CONVERT_A, 0.30f, 20000, { } },
+/*
+        { "ISL29023 Light sensor",
+          "Intersil",
+          1, SENSORS_LIGHT_HANDLE,
+          SENSOR_TYPE_LIGHT, 16000.0f, 1.0f, 0.35f, 0, { } },
+*/
 };
 
 
@@ -78,7 +96,7 @@ struct sensors_module_t HAL_MODULE_INFO_SYM = {
                 version_minor: 0,
                 id: SENSORS_HARDWARE_MODULE_ID,
                 name: "Freescale Sensor module",
-                author: "Freescale Semiconductor Inc., Quarx",
+                author: "Freescale Semiconductor Inc.",
                 methods: &sensors_module_methods,
         },
         get_sensors_list: sensors__get_sensors_list,
@@ -95,6 +113,8 @@ struct sensors_poll_context_t {
 
 private:
     enum {
+        //light           = 0,
+        //accel             = 1,
 	accel             = 0,
         numSensorDrivers,
         numFds,
@@ -112,6 +132,8 @@ private:
             case ID_M:
             case ID_O:
                 return accel;
+        //    case ID_L:
+         //       return light;
         }
         return -EINVAL;
     }
@@ -121,6 +143,13 @@ private:
 
 sensors_poll_context_t::sensors_poll_context_t()
 {
+   /*
+    mSensors[light] = new LightSensor();
+    mPollFds[light].fd = mSensors[light]->getFd();
+    mPollFds[light].events = POLLIN;
+    mPollFds[light].revents = 0;
+	*/
+
     mSensors[accel] = new AccelSensor();
     mPollFds[accel].fd = mSensors[accel]->getFd();
     mPollFds[accel].events = POLLIN;

@@ -15,35 +15,47 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_INPUT_EVENT_READER_H
-#define ANDROID_INPUT_EVENT_READER_H
+#ifndef ANDROID_LIGHT_SENSOR_H
+#define ANDROID_LIGHT_SENSOR_H
 
 #include <stdint.h>
 #include <errno.h>
 #include <sys/cdefs.h>
 #include <sys/types.h>
 
+#include "sensors.h"
+#include "SensorBase.h"
+#include "InputEventReader.h"
+
+#define ISL29023_ALS_CONT_MODE   5
+
 /*****************************************************************************/
 
 struct input_event;
 
-class InputEventCircularReader
-{
-    struct input_event* const mBuffer;
-    struct input_event* const mBufferEnd;
-    struct input_event* mHead;
-    struct input_event* mCurr;
-    ssize_t mFreeSpace;
+class LightSensor : public SensorBase {
+    int mEnabled;
+    InputEventCircularReader mInputReader;
+    sensors_event_t mPendingEvent;
+    bool mHasPendingEvent;
+    char ls_sysfs_path[PATH_MAX];
+    int ls_sysfs_path_len;
+    float mPreviousLight;
 
 public:
-    InputEventCircularReader(size_t numEvents);
-    ~InputEventCircularReader();
-    ssize_t fill(int fd);
-    ssize_t readEvent(input_event const** events);
-    void next();
+            LightSensor();
+    virtual ~LightSensor();
+    virtual int readEvents(sensors_event_t* data, int count);
+    virtual bool hasPendingEvents() const;
+    virtual int setDelay(int32_t handle, int64_t ns);
+    virtual int enable(int32_t handle, int enabled);
+
+private:
+    int mThresholdLux;
+    int setIntLux();
 };
 
 /*****************************************************************************/
 
-#endif  // ANDROID_INPUT_EVENT_READER_H
+#endif  // ANDROID_LIGHT_SENSOR_H
 

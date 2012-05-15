@@ -49,7 +49,7 @@ PRODUCT_PACKAGES += VisualizationWallpapers librs_jni
 PRODUCT_PACKAGES += make_ext4fs e2fsck
 
 # Hardware support
-PRODUCT_PACKAGES += audio.primary.sun4i audio_policy.default
+PRODUCT_PACKAGES += audio.primary.sun4i audio_policy.default sensors.sun4i
 
 # copy all others kernel modules under the "modules" directory to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modules && \
