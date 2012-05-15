@@ -53,6 +53,9 @@ BOARD_USE_SKIA_LCDTEXT := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/allwinner/common/recovery_keys.c
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
+#Headers stuff
+TARGET_SPECIFIC_HEADER_PATH := device/allwinner/common/include
+
 # Wifi stuff
 #WPA_SUPPLICANT_VERSION := VER_0_8_X  //Prebuilt
 #BOARD_WPA_SUPPLICANT_DRIVER := NL80211
