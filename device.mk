@@ -48,6 +48,9 @@ PRODUCT_PACKAGES += VisualizationWallpapers librs_jni
 # EXT4 Support
 PRODUCT_PACKAGES += make_ext4fs e2fsck
 
+# Hardware support
+PRODUCT_PACKAGES += audio.primary.sun4i audio_policy.default
+
 # copy all others kernel modules under the "modules" directory to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modules && \
 	find device/allwinner/common/prebuilt/lib/modules -name '*.ko' \
