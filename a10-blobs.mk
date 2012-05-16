@@ -27,14 +27,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/allwinner/common/prebuilt/etc/camera.cfg:system/etc/camera.cfg \
         device/allwinner/common/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml 
-# Codecs
-PRODUCT_COPY_FILES += \
-	device/allwinner/common/prebuilt/lib/libCedarA.so:system/lib/libCedarA.so \
-	device/allwinner/common/prebuilt/lib/libcedarv.so:system/lib/libcedarv.so \
-	device/allwinner/common/prebuilt/lib/libCedarX.so:system/lib/libCedarX.so \
-	device/allwinner/common/prebuilt/lib/libcedarxbase.so:system/lib/libcedarxbase.so \
-	device/allwinner/common/prebuilt/lib/libswdrm.so:system/lib/libswdrm.so \
-	device/allwinner/common/prebuilt/lib/libcedarxosal.so:system/lib/libcedarxosal.so 
 
 # will be removed in future
 PRODUCT_COPY_FILES += \

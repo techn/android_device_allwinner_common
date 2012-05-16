@@ -57,6 +57,15 @@ PRODUCT_PACKAGES += audio.primary.sun4i \
 	sensors.sun4i \
 #
 
+# CedarX libraries
+PRODUCT_PACKAGES += libCedarA \
+	libCedarX \
+	libcedarv \
+	libcedarxbase \
+	libcedarxosal \
+	libswdrm \
+#
+
 # copy all others kernel modules under the "modules" directory to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modules && \
 	find device/allwinner/common/prebuilt/lib/modules -name '*.ko' \
