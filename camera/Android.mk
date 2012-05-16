@@ -39,7 +39,7 @@ LOCAL_C_INCLUDES += 								\
 	frameworks/base/core/jni/android/graphics 		\
 	external/cedarx/CedarX/include/include_camera \
 	hardware/libhardware/include/hardware \
-	$(TARGET_HARDWARE_INCLUDE)
+	device/allwinner/common/include
 					
 
 LOCAL_SRC_FILES := \
