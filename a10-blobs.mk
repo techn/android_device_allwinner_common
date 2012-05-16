@@ -59,7 +59,5 @@ PRODUCT_COPY_FILES += \
 	device/allwinner/common/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	device/allwinner/common/prebuilt/lib/liballwinner-ril.so:system/lib/liballwinner-ril.so \
 	device/allwinner/common/prebuilt/bin/erase_misc.sh:system/bin/erase_misc.sh \
-        device/allwinner/common/prebuilt/bootanimation.zip:system/media/bootanimation.zip \
-
 
 #end of a10-blobs.mk
