@@ -71,6 +71,9 @@ PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modul
 	find device/allwinner/common/prebuilt/lib/modules -name '*.ko' \
 	-printf '%p:system/lib/modules/%f ')
 
+# let us get out of recovery
+PRODUCT_COPY_FILES += device/allwinner/common/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+
 $(call inherit-product, build/target/product/full_base.mk)
 
 # Should be after the full_base include, which loads languages_full
