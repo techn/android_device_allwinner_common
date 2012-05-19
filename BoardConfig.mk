@@ -65,5 +65,9 @@ WIFI_DRIVER_MODULE_NAME     := 8192cu
 WIFI_DRIVER_FW_PATH_STA     := 8192cu
 WIFI_DRIVER_FW_PATH_AP      := 8192cu
 
-# Beware: set only prebuilt OR source+config
+BOARD_KERNEL_BASE := 0x40000000
+BOARD_KERNEL_CMDLINE := console=ttyS0,115200 rw init=/init loglevel=8
+BOARD_KERNEL_PAGESIZE := 2048
+
 TARGET_PREBUILT_KERNEL := $(ANDROID_BUILD_TOP)/device/allwinner/common/kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := $(ANDROID_BUILD_TOP)/device/allwinner/common/recovery
