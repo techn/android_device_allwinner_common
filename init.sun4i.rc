@@ -16,9 +16,9 @@ on fs
         symlink /dev/block/nandg /dev/block/recovery
         symlink /dev/block/nandh /dev/block/cache
 
-        exec /system/bin/e2fsck -y /dev/block/system 
-        exec /system/bin/e2fsck -y /dev/block/data 
-        exec /system/bin/e2fsck -y /dev/block/cache
+        #exec /system/bin/e2fsck -y /dev/block/system
+        #exec /system/bin/e2fsck -y /dev/block/data 
+        #exec /system/bin/e2fsck -y /dev/block/cache
 
         mount ext4 /dev/block/system /system wait ro noatime nodev barrier=0 nobh data=writeback noauto_da_alloc
         mount ext4 /dev/block/data /data wait noatime nodev barrier=0 nobh data=writeback noauto_da_alloc
@@ -78,7 +78,7 @@ on boot
         insmod /system/vendor/modules/tun.ko
 
         chown system system /sys/class/timed_output/sun4i-vibrator/enable
-        write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor fantasy
+        #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor fantasy
 
 # wifi related service
 service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 \

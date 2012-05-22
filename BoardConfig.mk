@@ -29,8 +29,6 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_CUSTOM_RELEASETOOL := ./device/allwinner/common/releasetools/squisher
-
 BOARD_HAVE_BLUETOOTH := true
 TARGET_USES_CUSTOM_VIBRATOR_PATH := "/sys/class/timed_output/sun4i-vibrator/enable"
 BOARD_HAS_SDCARD_INTERNAL := true
@@ -72,3 +70,14 @@ BOARD_KERNEL_PAGESIZE := 2048
 
 TARGET_PREBUILT_KERNEL := $(ANDROID_BUILD_TOP)/device/allwinner/common/kernel
 TARGET_PREBUILT_RECOVERY_KERNEL := $(ANDROID_BUILD_TOP)/device/allwinner/common/recovery
+
+TARGET_KERNEL_SOURCE := kernel/allwinner/common
+TARGET_KERNEL_CONFIG := sun4i_crane_defconfig
+
+ALLWINNER_MALI_MODULE:
+	make -C $(ANDROID_BUILD_TOP)/kernel/allwinner/common/modules/mali \
+	ARCH="arm" CROSS_COMPILE="arm-eabi-" LICHEE_KDIR="$(ANDROID_BUILD_TOP)/kernel/allwinner/common/" \
+	LICHEE_MOD_DIR="$(ANDROID_BUILD_TOP)/$(KERNEL_MODULES_OUT)" \
+	CONFIG_CHIP_ID=1123 O="$(KERNEL_OUT)"
+
+TARGET_KERNEL_MODULES := ALLWINNER_MALI_MODULE

@@ -69,6 +69,12 @@ PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modul
 # let us get out of recovery
 PRODUCT_COPY_FILES += device/allwinner/common/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
+# and let's get booting!
+PRODUCT_COPY_FILES += device/allwinner/common/ueventd.sun4i.rc:root/ueventd.sun4i.rc \
+	device/allwinner/common/init.sun4i.rc:root/init.sun4i.rc \
+	device/allwinner/common/init.sun4i.usb.rc:root/init.sun4i.usb.rc \
+#
+
 $(call inherit-product, build/target/product/full_base.mk)
 
 # Should be after the full_base include, which loads languages_full
