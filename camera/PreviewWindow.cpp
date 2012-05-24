@@ -25,7 +25,7 @@
 #include <ui/Rect.h>
 #include <ui/GraphicBufferMapper.h>
 #include <type_camera.h>
-#include <hwcomposer.h>
+#include <hardware/hwcomposer.h>
 #include "V4L2Camera.h"
 #include "PreviewWindow.h"
 

@@ -33,14 +33,12 @@ LOCAL_SHARED_LIBRARIES += \
 	libCedarX \
 	libcedarxosal
 	
-LOCAL_C_INCLUDES += 								\
-	external/jpeg 									\
-	external/skia/include/core/ 					\
-	frameworks/base/core/jni/android/graphics 		\
+LOCAL_C_INCLUDES += \
+	external/jpeg \
+	external/skia/include/core \
+	frameworks/base/core/jni/android/graphics \
+	device/allwinner/common/include \
 	external/cedarx/CedarX/include/include_camera \
-	hardware/libhardware/include/hardware \
-	device/allwinner/common/include
-					
 
 LOCAL_SRC_FILES := \
 	CameraHal.cpp \
