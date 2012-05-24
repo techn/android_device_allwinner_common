@@ -85,6 +85,7 @@ enum {
     // request FRAME and METADATA. Or the apps can request only FRAME or only
     // METADATA.
     CAMERA_MSG_PREVIEW_METADATA = 0x0400, // dataCallback
+    CAMERA_MSG_STATS_DATA       = 0x800, // From CM
     CAMERA_MSG_ALL_MSGS = 0xFFFF
 };
 
@@ -143,8 +144,17 @@ enum {
      */
     CAMERA_CMD_STOP_FACE_DETECTION = 7,
 
-	// add command
-	CAMERA_CMD_SET_SCREEN_ID = 0xFF000000,
+    /**
+     * From CM
+     */
+    CAMERA_CMD_HISTOGRAM_ON = 8,
+    CAMERA_CMD_HISTOGRAM_OFF = 9,
+    CAMERA_CMD_HISTOGRAM_SEND_DATA = 10,
+
+    /**
+     * Set screen ID
+     */
+    CAMERA_CMD_SET_SCREEN_ID = 0xFF000000,
 };
 
 /** camera fatal errors */
@@ -158,6 +168,14 @@ enum {
     CAMERA_FACING_BACK = 0,
     /** The facing of the camera is the same as that of the screen. */
     CAMERA_FACING_FRONT = 1
+};
+
+/** From CM */
+enum {
+    CAMERA_SUPPORT_MODE_2D = 0x01, /* Camera Sensor supports 2D mode. */
+    CAMERA_SUPPORT_MODE_3D = 0x02, /* Camera Sensor supports 3D mode. */
+    CAMERA_SUPPORT_MODE_NONZSL = 0x04, /* Camera Sensor in NON-ZSL mode. */
+    CAMERA_SUPPORT_MODE_ZSL = 0x08 /* Camera Sensor supports ZSL mode. */
 };
 
 enum {
