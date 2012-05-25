@@ -75,6 +75,9 @@ PRODUCT_COPY_FILES += device/allwinner/common/ueventd.sun4i.rc:root/ueventd.sun4
 	device/allwinner/common/init.sun4i.usb.rc:root/init.sun4i.usb.rc \
 #
 
+# let us use the storage
+PRODUCT_COPY_FILES += device/allwinner/common/vold.fstab:system/etc/vold.fstab
+
 $(call inherit-product, build/target/product/full_base.mk)
 
 # Should be after the full_base include, which loads languages_full
