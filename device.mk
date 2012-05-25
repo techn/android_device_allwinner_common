@@ -60,6 +60,7 @@ PRODUCT_PACKAGES += libCedarA \
 	libcedarv \
 	libcedarxbase \
 	libcedarxosal \
+	libcedarxsftdemux \
 	libswdrm \
 #
 
