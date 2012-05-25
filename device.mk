@@ -78,10 +78,8 @@ PRODUCT_COPY_FILES += device/allwinner/common/ueventd.sun4i.rc:root/ueventd.sun4
 # let us use the storage
 PRODUCT_COPY_FILES += device/allwinner/common/vold.fstab:system/etc/vold.fstab
 
+$(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full_base.mk)
-
-# Should be after the full_base include, which loads languages_full
-PRODUCT_LOCALES += hdpi
 
 PRODUCT_NAME := full_a10
 PRODUCT_DEVICE := A10
