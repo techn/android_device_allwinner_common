@@ -30,7 +30,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 BOARD_HAVE_BLUETOOTH := true
-TARGET_USES_CUSTOM_VIBRATOR_PATH := "/sys/class/timed_output/sun4i-vibrator/enable"
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/allwinner/common/vibrator.c
 BOARD_HAS_SDCARD_INTERNAL := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
