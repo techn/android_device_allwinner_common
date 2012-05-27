@@ -43,7 +43,7 @@ on boot
         insmod /system/lib/modules/mali.ko #Mail 400M
 
         chown system system /sys/class/timed_output/sun4i-vibrator/enable
-        #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor fantasy
+        write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor fantasy
 
 # wifi related service
 service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 \
