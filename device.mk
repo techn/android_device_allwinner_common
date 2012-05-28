@@ -67,11 +67,6 @@ PRODUCT_PACKAGES += libCedarA \
 	libswdrm \
 #
 
-# copy all others kernel modules under the "modules" directory to system/lib/modules
-PRODUCT_COPY_FILES += $(shell test -d device/allwinner/common/prebuilt/lib/modules && \
-	find device/allwinner/common/prebuilt/lib/modules -name '*.ko' \
-	-printf '%p:system/lib/modules/%f ')
-
 # let us get out of recovery
 PRODUCT_COPY_FILES += device/allwinner/common/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
