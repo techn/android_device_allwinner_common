@@ -84,6 +84,9 @@ PRODUCT_COPY_FILES += device/allwinner/common/ueventd.sun4i.rc:root/ueventd.sun4
 # let us use the storage
 PRODUCT_COPY_FILES += device/allwinner/common/vold.fstab:system/etc/vold.fstab
 
+# include a wpa_supplicant.conf file
+PRODUCT_COPY_FILES += device/allwinner/common/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 
