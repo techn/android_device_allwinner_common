@@ -23,6 +23,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-data-only=1 \
 	ro.vold.umsdirtyratio=20 \
+	hwui.render_dirty_regions=false \
+	persist.sys.usb.config=mass_storage,adb \
+	ro.display.switch=1 \
+	ro.opengles.version=131072 \
+	wifi.interface=wlan0 \
+	wifi.supplicant_scan_interval=60 \
 
 
 DEVICE_PACKAGE_OVERLAYS += device/allwinner/common/overlay
