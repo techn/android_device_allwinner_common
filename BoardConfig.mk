@@ -56,13 +56,15 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 TARGET_SPECIFIC_HEADER_PATH := device/allwinner/common/include
 
 # Wifi stuff
-#WPA_SUPPLICANT_VERSION := VER_0_8_X  //Prebuilt
-#BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-TARGET_CUSTOM_WIFI := ../../device/allwinner/common/wifi.c
+WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
+TARGET_CUSTOM_WIFI          := ../../device/allwinner/common/wifi.c
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/8192cu.ko"
 WIFI_DRIVER_MODULE_NAME     := 8192cu
 WIFI_DRIVER_FW_PATH_STA     := 8192cu
 WIFI_DRIVER_FW_PATH_AP      := 8192cu
+WIFI_DRIVER_SOCKET_IFACE    := wlan0
 
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_CMDLINE := console=ttyS0,115200 rw init=/init loglevel=8
