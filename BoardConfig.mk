@@ -29,7 +29,7 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-BOARD_HAVE_BLUETOOTH := false
+BOARD_HAVE_BLUETOOTH := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/allwinner/common/vibrator.c
 BOARD_HAS_SDCARD_INTERNAL := true
 
