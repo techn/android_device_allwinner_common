@@ -27,4 +27,3 @@ LOCAL_SRC_FILES := lights.c
 LOCAL_SHARED_LIBRARIES := liblog
 
 include $(BUILD_SHARED_LIBRARY)
-
