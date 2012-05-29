@@ -16,8 +16,6 @@
 /dev/snd/mixer            0660   system     audio
 /dev/snd/*                0660   system     audio
 /dev/input/*              0660   root       input
-/dev/tty*                 0660   root       system
-/dev/ttyS1                0660   system       system
 /dev/android_adb          0660   adb        adb
 /dev/ppp                  0660   radio      vpn
 /dev/disp                 0777   system     system 
@@ -39,4 +37,3 @@
 /sys/devices/virtual/input/input*   max         0660  root   input
 /sys/devices/virtual/input/input*   min         0660  root   input
 /sys/devices/virtual/input/input*   poll        0666  root   input
-
