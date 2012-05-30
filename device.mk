@@ -54,6 +54,7 @@ PRODUCT_PACKAGES += audio.primary.sun4i \
 	display.sun4i \
 	gralloc.sun4i \
 	hwcomposer.sun4i \
+	lights.sun4i \
 	sensors.sun4i \
 #
 
