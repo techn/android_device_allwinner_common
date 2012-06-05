@@ -75,11 +75,3 @@ TARGET_PREBUILT_RECOVERY_KERNEL := $(ANDROID_BUILD_TOP)/device/allwinner/common/
 
 TARGET_KERNEL_SOURCE := kernel/allwinner/common
 TARGET_KERNEL_CONFIG := sun4i_crane_defconfig
-
-ALLWINNER_MALI_MODULE:
-	make -C $(ANDROID_BUILD_TOP)/kernel/allwinner/common/modules/mali \
-	ARCH="arm" CROSS_COMPILE="arm-eabi-" LICHEE_KDIR="$(ANDROID_BUILD_TOP)/kernel/allwinner/common/" \
-	LICHEE_MOD_DIR="$(ANDROID_BUILD_TOP)/$(KERNEL_MODULES_OUT)" \
-	CONFIG_CHIP_ID=1123 O="$(KERNEL_OUT)"
-
-TARGET_KERNEL_MODULES := ALLWINNER_MALI_MODULE
