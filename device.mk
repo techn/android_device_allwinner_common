@@ -56,6 +56,7 @@ PRODUCT_PACKAGES += audio.primary.sun4i \
 	hwcomposer.sun4i \
 	lights.sun4i \
 	sensors.sun4i \
+	setrecovery \
 #
 
 # CedarX libraries
@@ -68,7 +69,7 @@ PRODUCT_PACKAGES += libCedarA \
 	libswdrm \
 #
 
-# let us get out of recovery
+# runs after recovery boot
 PRODUCT_COPY_FILES += device/allwinner/common/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 # and let's get booting!
