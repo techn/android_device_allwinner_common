@@ -44,6 +44,8 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_EGL_CFG := device/allwinner/common/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USE_SKIA_LCDTEXT := true
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 #Recovery Stuff
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_generic
