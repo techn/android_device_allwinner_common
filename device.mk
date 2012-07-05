@@ -29,6 +29,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=131072 \
 	wifi.interface=wlan0 \
 	wifi.supplicant_scan_interval=60 \
+	ro.carrier=wifi-only \
 
 
 DEVICE_PACKAGE_OVERLAYS += device/allwinner/common/overlay
