@@ -16,6 +16,8 @@
 
 PRODUCT_CHARACTERISTICS := tablet
 
+PRODUCT_TAGS += dalvik.gc.type-precise
+
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.google.locationfeatures=1 \
