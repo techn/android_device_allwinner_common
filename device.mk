@@ -53,7 +53,6 @@ PRODUCT_PACKAGES += make_ext4fs e2fsck
 # Hardware support
 PRODUCT_PACKAGES += audio.primary.sun4i \
 	audio_policy.default \
-	camera.sun4i \
 	display.sun4i \
 	gralloc.sun4i \
 	hwcomposer.sun4i \
