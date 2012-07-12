@@ -214,7 +214,7 @@ public:
      *  - Original format, as reported by the actual camera device. Values for
      *    this format are declared in bionic/libc/kernel/common/linux/videodev2.h
      *  - String representation as defined in CameraParameters::PIXEL_FORMAT_XXX
-     *    strings in frameworks/base/include/camera/CameraParameters.h
+     *    strings in frameworks/av/include/camera/CameraParameters.h
      *  - HAL_PIXEL_FORMAT_XXX format, as defined in system/core/include/system/graphics.h
      * Since V4L2Camera device gets its data from the actual device, it gets
      * pixel format in the original form. And that's the pixel format
