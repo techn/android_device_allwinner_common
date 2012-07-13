@@ -3,11 +3,14 @@ import init.sun4i.modules.rc
 
 on early-init
 
-        export EXTERNAL_STORAGE /mnt/sdcard
-        mkdir /mnt/sdcard 0000 system system
-        mkdir /mnt/extsd 0000 system system
-        mkdir /mnt/usbhost1 0000 system system
-        symlink /mnt/sdcard /sdcard
+        export EXTERNAL_STORAGE /storage/sdcard0
+        export SECONDARY_STORAGE /storage/sdcard1
+        mkdir /storage 0050 system sdcard_r
+        mkdir /storage/sdcard0 0000 system system
+        mkdir /storage/sdcard1 0000 system system
+        mkdir /storage/sdcard2 0000 system system
+        symlink /storage/sdcard0 /sdcard
+        symlink /storage/sdcard0 /mnt/sdcard
 
 on fs
 
