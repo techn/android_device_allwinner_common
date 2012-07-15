@@ -86,6 +86,12 @@ PRODUCT_COPY_FILES += device/allwinner/common/vold.fstab:system/etc/vold.fstab
 # include a wpa_supplicant.conf file
 PRODUCT_COPY_FILES += device/allwinner/common/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
+# OMX codec support
+PRODUCT_COPY_FILES += device/allwinner/common/media_codecs.xml:system/etc/media_codecs.xml
+
+# Audio policy
+PRODUCT_COPY_FILES += device/allwinner/common/audio/audio_policy.conf:system/etc/audio_policy.conf
+
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 
