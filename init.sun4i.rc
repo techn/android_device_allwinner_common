@@ -19,6 +19,7 @@ on fs
         symlink /dev/block/nande /dev/block/data
         symlink /dev/block/nandg /dev/block/recovery
         symlink /dev/block/nandh /dev/block/cache
+        symlink /dev/block/nandf /dev/block/misc
 
         #exec /system/bin/e2fsck -y /dev/block/system
         #exec /system/bin/e2fsck -y /dev/block/data 
