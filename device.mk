@@ -59,6 +59,7 @@ PRODUCT_PACKAGES += audio.primary.sun4i \
 	gralloc.sun4i \
 	hwcomposer.sun4i \
 	lights.sun4i \
+	power.sun4i \
 	sensors.sun4i \
 	setrecovery \
 #
