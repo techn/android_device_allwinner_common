@@ -79,3 +79,4 @@ BOARD_KERNEL_PAGESIZE := 2048
 
 TARGET_KERNEL_SOURCE := kernel/allwinner/common
 TARGET_KERNEL_CONFIG := sun4i_crane_defconfig
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
