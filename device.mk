@@ -55,6 +55,7 @@ PRODUCT_PACKAGES += audio.primary.sun4i \
 	audio_policy.default \
 	audio.a2dp.default \
 	audio.usb.default \
+	camera.sun4i \
 	display.sun4i \
 	gralloc.sun4i \
 	hwcomposer.sun4i \
@@ -72,6 +73,14 @@ PRODUCT_PACKAGES += libCedarA \
 	libcedarxosal \
 	libcedarxsftdemux \
 	libswdrm \
+	libcedarv_adapter \
+	libve \
+	libfacedetection \
+	libaw_audio \
+	libaw_audioa \
+	libcedarv_base \
+	libstagefright_soft_cedar_h264dec \
+	librtmp \
 #
 
 # runs after recovery boot
