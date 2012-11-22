@@ -28,12 +28,16 @@ __BEGIN_DECLS
 
 /*****************************************************************************/
 
+#define HWC_HEADER_VERSION          1
+
 #define HWC_MODULE_API_VERSION_0_1  HARDWARE_MODULE_API_VERSION(0, 1)
 
-#define HWC_DEVICE_API_VERSION_0_1  HARDWARE_DEVICE_API_VERSION(0, 1)
-#define HWC_DEVICE_API_VERSION_0_2  HARDWARE_DEVICE_API_VERSION(0, 2)
-#define HWC_DEVICE_API_VERSION_0_3  HARDWARE_DEVICE_API_VERSION(0, 3)
-
+#define HWC_DEVICE_API_VERSION_0_1  HARDWARE_DEVICE_API_VERSION_2(0, 1, HWC_HEADER_VERSION)
+#define HWC_DEVICE_API_VERSION_0_2  HARDWARE_DEVICE_API_VERSION_2(0, 2, HWC_HEADER_VERSION)
+#define HWC_DEVICE_API_VERSION_0_3  HARDWARE_DEVICE_API_VERSION_2(0, 3, HWC_HEADER_VERSION)
+#define HWC_DEVICE_API_VERSION_1_0  HARDWARE_DEVICE_API_VERSION_2(1, 0, HWC_HEADER_VERSION)
+#define HWC_DEVICE_API_VERSION_1_1  HARDWARE_DEVICE_API_VERSION_2(1, 1, HWC_HEADER_VERSION)
+#define HWC_DEVICE_API_VERSION_1_2  HARDWARE_DEVICE_API_VERSION_2(1, 2, HWC_HEADER_VERSION)
 
 enum {
     /* hwc_composer_device_t::set failed in EGL */
@@ -89,6 +93,10 @@ enum {
     /* this is the background layer. it's used to set the background color.
      * there is only a single background layer */
     HWC_BACKGROUND = 2,
+
+    /* this layer holds the result of compositing the HWC_FRAMEBUFFER layers.
+     * Added in HWC_DEVICE_API_VERSION_1_1. */
+    HWC_FRAMEBUFFER_TARGET = 3,
 };
 
 /*
@@ -124,16 +132,49 @@ enum {
 /* attributes queriable with query() */
 enum {
     /*
-     * availability: HWC_DEVICE_API_VERSION_0_2
-     * must return 1 if the background layer is supported, 0 otherwise
+     * Availability: HWC_DEVICE_API_VERSION_0_2
+     * Must return 1 if the background layer is supported, 0 otherwise.
      */
     HWC_BACKGROUND_LAYER_SUPPORTED      = 0,
 
     /*
-     * availability: HWC_DEVICE_API_VERSION_0_3
-     * returns the vsync period in nanosecond
+     * Availability: HWC_DEVICE_API_VERSION_0_3
+     * Returns the vsync period in nanoseconds.
+     *
+     * This query is not used for HWC_DEVICE_API_VERSION_1_1 and later.
+     * Instead, the per-display attribute HWC_DISPLAY_VSYNC_PERIOD is used.
      */
     HWC_VSYNC_PERIOD                    = 1,
+
+    /*
+     * Availability: HWC_DEVICE_API_VERSION_1_1
+     * Returns a mask of supported display types.
+     */
+    HWC_DISPLAY_TYPES_SUPPORTED         = 2,
+};
+
+/* display attributes returned by getDisplayAttributes() */
+enum {
+    /* Indicates the end of an attribute list */
+    HWC_DISPLAY_NO_ATTRIBUTE                = 0,
+
+    /* The vsync period in nanoseconds */
+    HWC_DISPLAY_VSYNC_PERIOD                = 1,
+
+    /* The number of pixels in the horizontal and vertical directions. */
+    HWC_DISPLAY_WIDTH                       = 2,
+    HWC_DISPLAY_HEIGHT                      = 3,
+
+    /* The number of pixels per thousand inches of this configuration.
+     *
+     * Scaling DPI by 1000 allows it to be stored in an int without losing
+     * too much precision.
+     *
+     * If the DPI for a configuration is unavailable or the HWC implementation
+     * considers it unreliable, it should set these attributes to zero.
+     */
+    HWC_DISPLAY_DPI_X                       = 4,
+    HWC_DISPLAY_DPI_Y                       = 5,
 };
 
 /* Allowed events for hwc_methods::eventControl() */
@@ -142,66 +183,18 @@ enum {
     HWC_EVENT_ORIENTATION    // To notify HWC about the device orientation
 };
 
-/* Allwinner additions */
-/* names for setParameter() */
+/* Display types and associated mask bits. */
 enum {
-    /* rotation of the source image in degrees (0 to 359) */
-    HWC_LAYER_ROTATION_DEG  	= 1,
-    /* enable or disable dithering */
-    HWC_LAYER_DITHER        	= 3,
-    HWC_LAYER_SETMODE = 9,
-    /* transformation applied (this is a superset of COPYBIT_ROTATION_DEG) */
-    HWC_LAYER_SETINITPARA,
-    /* set videoplayer init overlay parameter */
-    HWC_LAYER_SETVIDEOPARA,
-    /* set videoplayer play frame overlay parameter*/
-    HWC_LAYER_SETFRAMEPARA,
-    /* get videoplayer play frame overlay parameter*/
-    HWC_LAYER_GETCURFRAMEPARA,
-    /* query video blank interrupt*/
-    HWC_LAYER_QUERYVBI,
-    /* set overlay screen id*/
-    HWC_LAYER_SETSCREEN,
-
-    HWC_LAYER_SHOW,
-
-    HWC_LAYER_RELEASE,
-
-    HWC_LAYER_SET3DMODE,
-    HWC_LAYER_SETFORMAT,
-
-    HWC_LAYER_VPPON,
-    HWC_LAYER_VPPGETON,
-
-    HWC_LAYER_SETLUMASHARP,
-    HWC_LAYER_GETLUMASHARP,
-
-    HWC_LAYER_SETCHROMASHARP,
-    HWC_LAYER_GETCHROMASHARP,
-
-    HWC_LAYER_SETWHITEEXTEN,
-    HWC_LAYER_GETWHITEEXTEN,
-
-    HWC_LAYER_SETBLACKEXTEN,
-    HWC_LAYER_GETBLACKEXTEN,
+    HWC_DISPLAY_PRIMARY     = 0,
+    HWC_DISPLAY_EXTERNAL    = 1,    // HDMI, DP, etc.
+    HWC_NUM_DISPLAY_TYPES
 };
 
-/* possible overlay formats */
-enum
-{
-    HWC_FORMAT_MINVALUE     = 0x50,
-    HWC_FORMAT_RGBA_8888    = 0x51,
-    HWC_FORMAT_RGB_565      = 0x52,
-    HWC_FORMAT_BGRA_8888    = 0x53,
-    HWC_FORMAT_YCbYCr_422_I = 0x54,
-    HWC_FORMAT_CbYCrY_422_I = 0x55,
-    HWC_FORMAT_MBYUV420	    = 0x56,
-    HWC_FORMAT_MBYUV422	    = 0x57,
-    HWC_FORMAT_YUV420PLANAR = 0x58,
-    HWC_FORMAT_DEFAULT      = 0x99,    // The actual color format is determined
-    HWC_FORMAT_MAXVALUE     = 0x100
+enum {
+    HWC_DISPLAY_PRIMARY_BIT     = 1 << HWC_DISPLAY_PRIMARY,
+    HWC_DISPLAY_EXTERNAL_BIT    = 1 << HWC_DISPLAY_EXTERNAL,
 };
-/* End of Allwinner additions */
+
 /*****************************************************************************/
 
 __END_DECLS
