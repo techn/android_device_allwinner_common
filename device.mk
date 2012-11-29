@@ -55,7 +55,6 @@ PRODUCT_PACKAGES += audio.primary.sun4i \
 	audio_policy.default \
 	audio.a2dp.default \
 	audio.usb.default \
-	camera.sun4i \
 	display.sun4i \
 	gralloc.sun4i \
 	hwcomposer.sun4i \
@@ -63,7 +62,7 @@ PRODUCT_PACKAGES += audio.primary.sun4i \
 	power.sun4i \
 	sensors.sun4i \
 	setrecovery \
-#
+#	\ #camera.sun4i \
 
 # CedarX libraries
 PRODUCT_PACKAGES += libCedarA \
