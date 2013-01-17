@@ -103,6 +103,9 @@ PRODUCT_COPY_FILES += device/allwinner/common/media_codecs.xml:system/etc/media_
 # Audio policy
 PRODUCT_COPY_FILES += device/allwinner/common/audio/audio_policy.conf:system/etc/audio_policy.conf
 
+# NAND tends to be slow, lets preload some things
+PRODUCT_COPY_FILES += device/allwinner/common/preload.sh:system/etc/init.d/01preload
+
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 
