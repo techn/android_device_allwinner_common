@@ -139,7 +139,11 @@ D/tinyalsa(  602): mix id:15 name:ADC Input Mux
 /* ALSA cards for A10 */
 #define CARD_OMAP4_ABE 0
 #define CARD_OMAP4_HDMI 1
+#ifdef DEFAULT_AUDIO_HDMI
+#define CARD_TUNA_DEFAULT CARD_OMAP4_HDMI
+#else
 #define CARD_TUNA_DEFAULT CARD_OMAP4_ABE
+#endif
 
 /* ALSA ports for A10 */
 #define PORT_MM 0

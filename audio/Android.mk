@@ -26,5 +26,9 @@ LOCAL_C_INCLUDES += \
 LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libdl
 LOCAL_MODULE_TAGS := optional
 
+ifeq ($(SW_BOARD_AUDIO_DEFAULT_HDMI),true)
+LOCAL_CFLAGS += -DDEFAULT_AUDIO_HDMI
+endif
+
 include $(BUILD_SHARED_LIBRARY)
 
