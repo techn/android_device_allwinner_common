@@ -1134,7 +1134,7 @@ static int  display_getwidth(struct display_context_t* ctx,int displayno,int for
     return -1;
 }
 
-#if 1
+#ifdef UNDERSCAN
 static int  display_getvalidwidth(struct display_context_t* ctx,int displayno,int format)
 {
     switch (format) 
@@ -1318,7 +1318,7 @@ static int  display_getheight(struct display_context_t* ctx,int displayno,int fo
     return -1;
 }
 
-#if 1
+#ifdef UNDERSCAN
 static int  display_getvalidheight(struct display_context_t* ctx,int displayno,int format)
 {
     switch (format) 
