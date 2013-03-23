@@ -89,7 +89,7 @@ PRODUCT_COPY_FILES += device/allwinner/common/postrecoveryboot.sh:recovery/root/
 # and let's get booting!
 PRODUCT_COPY_FILES += device/allwinner/common/ueventd.sun4i.rc:root/ueventd.sun4i.rc \
 	device/allwinner/common/init.sun4i.rc:root/init.sun4i.rc \
-	device/allwinner/common/init.sun4i.usb.rc:root/init.sun4i.usb.rc \
+	device/allwinner/common/init.sunxi.usb.rc:root/init.sunxi.usb.rc \
 #
 
 # let us use the storage
