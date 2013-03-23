@@ -15,11 +15,15 @@ int device_handle_key(int key_code, int visible) {
             case KEY_3:
             case KEY_ENTER:
             case KEY_SEARCH:
+            case KEY_DOWN:
+            case KEY_VOLUMEDOWN:
                 return HIGHLIGHT_DOWN;
 
             case KEY_4:
             case KEY_HOME:
             case KEY_MENU:
+            case KEY_UP:
+            case KEY_VOLUMEUP:
                 return HIGHLIGHT_UP;
 
             case KEY_2:
